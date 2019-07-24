@@ -1,0 +1,21 @@
+from DLGApp.myApp import print_total
+import unittest
+
+class TestSum(unittest.TestCase):
+
+    def test_sum(self):
+        self.assertEqual(sum([1, 2, 3]), 6)
+
+    def test_print_total_positive(self):
+        expected_output = '{"Total ": 50000005000000}'
+        actual_output = print_total()
+        self.assetEqual(actual_output, expected_output)
+
+    def test_print_total_negative(self):
+        expected_output = '{"Total ": 0}'
+        actual_output = print_total()
+        self.assetNotEqual(actual_output, expected_output)
+        
+
+if __name__ == '__main__':
+    unittest.main()

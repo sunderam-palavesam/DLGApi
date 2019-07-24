@@ -1,0 +1,34 @@
+from flask import Flask, json, render_template
+
+#initiate the application instance
+app = Flask(__name__, template_folder="templates")
+
+#create a URL route in our application for "/"
+@app.route('/')
+def home():
+    """
+    This is the main landing page, responding to URL localhost:5000/
+
+
+    :return     the rendered template 'home.html'
+    """
+    return render_template('home.html')
+
+@app.route('/total', methods=['GET'])
+def print_total():
+    """
+    This function responds to URL localhost:5000/total and
+    computes the sum of input number sequence
+
+
+    :return    total : sum(input sequence)
+    """
+    numbers_to_add = list(range(10000001))
+    sum_of_numbers = sum(numbers_to_add)
+    data = json.dumps({"Total " : sum_of_numbers })
+    return data
+
+# run the application in stand alone mode 
+if __name__ == '__main__':
+   app.run(host='localhost', port=5000, debug=True)
+    
